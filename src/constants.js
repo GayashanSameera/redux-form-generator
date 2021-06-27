@@ -1,0 +1,2 @@
+export const FORM_TYPE_SIMPLE = 'SIMPLE';
+export const SIMPLE_WITH_TABS = 'SIMPLE_WITH_TABS';

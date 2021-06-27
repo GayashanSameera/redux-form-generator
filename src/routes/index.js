@@ -2,12 +2,12 @@ import React from "react";
 import { Router as ReactRouter, Route, Switch, Redirect } from "react-router";
 import { history } from "../redux/store";
 
-import ViewForms from "../sampleForms";
+import StepOne from "../containers/StepOne/StepOne";
 
 const routes = (
     <ReactRouter history={history}>
         <Switch>
-            <Route exact path="/" render={(props) => <ViewForms name="SAMPLE_FORM_ONE" />} />
+            <Route exact path="/1" render={(props) => <StepOne />} />
         </Switch>
     </ReactRouter>
 );

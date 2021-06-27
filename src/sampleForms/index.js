@@ -1,15 +1,17 @@
 import SampleFormOne from './simpleForm';
 
+import {FORM_TYPE_SIMPLE} from '../constants';
 
-let ViewForms = (props) => {
-    const { handleSubmit, name } = props;
+
+let CreateForm = (props) => {
+    const { handleSubmit, formType } = props;
     return (
         <>
         {
-            name === 'SAMPLE_FORM_ONE' ? (<SampleFormOne />) : null
+            formType === FORM_TYPE_SIMPLE ? (<SampleFormOne {...props} />) : null
         }
         </>
     );
 };
 
-export default ViewForms;
+export default CreateForm;

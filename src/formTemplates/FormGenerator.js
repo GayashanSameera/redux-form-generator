@@ -4,6 +4,7 @@ import { compose } from "redux";
 import { connect, useDispatch, useSelector } from "react-redux";
 
 import FormBaseTemplate from "./BaseTemplate";
+import { FORM_TYPE_SIMPLE, SIMPLE_WITH_TABS } from "../constants";
 
 const simpleFormFormat = (props) => {
     const { handleSubmit, name, schemeId, completed, formFields, className, dirtyFormValues } = props;
@@ -22,14 +23,14 @@ const simpleFormWithTabsFormat = (props) => {
 };
 
 let FormGenerator = (props) => {
-    const { formType = "SIMPLE", name } = props;
-    
+    const { formType = FORM_TYPE_SIMPLE, name } = props;
+
     const dispatch = useDispatch();
     const dirtyFormValues = useSelector(getFormValues(name));
 
-    return formType === "SIMPLE" ? (
+    return formType === FORM_TYPE_SIMPLE ? (
         simpleFormFormat({ dirtyFormValues, ...props })
-    ) : formType === "SIMPLE_WITH_TABS" ? (
+    ) : formType === SIMPLE_WITH_TABS ? (
         simpleFormWithTabsFormat({ dirtyFormValues, ...props })
     ) : (
         <></>

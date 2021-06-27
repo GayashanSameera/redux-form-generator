@@ -1,18 +1,17 @@
 import React from "react";
+import { compose } from "redux";
 import { getFormValues, submit } from "redux-form";
-import { useDispatch, useSelector, connect } from "react-redux"; 
-
-import { formFields } from "./formConfig";
-import { FORM_NAME } from "./constants";
+import { useDispatch, useSelector, connect } from "react-redux";
 
 import FormGenerator from "../../formTemplates/FormGenerator";
 import FormHeaderComponent from "../../formTemplates/FormHeader";
 import { FORM_ACTION_TYPES } from "../../formTemplates/constants";
+import { FORM_TYPE_SIMPLE } from "../../constants";
 
 let SampleFormOne = (props) => {
-    const { submitSimpleFormOne, simpleFormData } = props;
+    const { submitSimpleFormOne, simpleFormData, formFields, formName } = props;
     const dispatch = useDispatch();
-    const dirtyFormValues = useSelector(getFormValues(FORM_NAME));
+    const dirtyFormValues = useSelector(getFormValues(formName));
 
     console.log("dirtyFormValues", dirtyFormValues);
     console.log("simpleFormData", simpleFormData);
@@ -22,7 +21,7 @@ let SampleFormOne = (props) => {
     };
 
     const handleSubmit = (submissionType) => {
-        submitSimpleFormOne();
+        submitSimpleFormOne(formName);
     };
 
     const formHeaderProps = {
@@ -56,22 +55,21 @@ let SampleFormOne = (props) => {
             <FormGenerator
                 className="generate-iaa-manager-letters-form"
                 onSubmit={formSubmit}
-                name={FORM_NAME}
+                name={formName}
                 formFields={formFields}
-                formType = "SIMPLE"
+                formType={FORM_TYPE_SIMPLE}
             />
         </>
     );
 };
 
-const mapStateToProps = (state) => ({
-    simpleFormData: getFormValues(FORM_NAME)(state),
+const mapStateToProps = (state, ownProps) => ({
+    simpleFormData: getFormValues(ownProps.formName)(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    submitSimpleFormOne: () => {
+    submitSimpleFormOne: (FORM_NAME) => {
         dispatch(submit(FORM_NAME));
     },
 });
-
-export default connect(mapStateToProps, mapDispatchToProps)(SampleFormOne);
+export default compose(connect(mapStateToProps, mapDispatchToProps))(SampleFormOne);
