@@ -1,4 +1,3 @@
-import config from 'appConfig';
 import React from 'react';
 import { DatePicker as AntDatePicker, Checkbox, Select, Input } from 'antd';
 import moment from 'moment';
