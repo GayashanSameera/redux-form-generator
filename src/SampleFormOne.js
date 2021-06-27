@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Col, Row } from 'antd';
 import { required } from 'redux-form-validators';
 
-import { NumberField } from './Fields';
+import { NumberField } from './generators/Fields';
 
 
 let SampleFormOne = props => {
