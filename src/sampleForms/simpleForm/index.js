@@ -5,7 +5,7 @@ import { useDispatch, useSelector, connect } from "react-redux";
 import { formFields } from "./formConfig";
 import { FORM_NAME } from "./constants";
 
-import SimpleFormGenerator from "../../formTemplates/SimpleFormGenerator";
+import FormGenerator from "../../formTemplates/FormGenerator";
 import FormHeaderComponent from "../../formTemplates/FormHeader";
 import { FORM_ACTION_TYPES } from "../../formTemplates/constants";
 
@@ -53,11 +53,12 @@ let SampleFormOne = (props) => {
     return (
         <>
             <FormHeaderComponent {...formHeaderProps} />
-            <SimpleFormGenerator
+            <FormGenerator
                 className="generate-iaa-manager-letters-form"
                 onSubmit={formSubmit}
                 name={FORM_NAME}
                 formFields={formFields}
+                formType = "SIMPLE"
             />
         </>
     );
