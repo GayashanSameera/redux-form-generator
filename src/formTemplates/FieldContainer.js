@@ -3,7 +3,7 @@ import { Field, FieldArray } from "redux-form";
 import { Row, Col, Tooltip, Button, Divider } from "antd";
 
 import FormField from "./FormField";
-import { FileDownloader, CheckboxField } from "../generators/Fields";
+import { CheckboxField } from "../generators/Fields";
 
 export const FullContainer = ({ label, field, rawComponents, blockComponent, disabled, iIcon, classN, hide }) => {
     const className = `input-wrapper ${blockComponent ? "block-input" : ""} ${classN}`;
@@ -100,7 +100,7 @@ export const PublishCheckbox = ({ name, label, resourceName, resourceUrl, props,
             <Col xl={10} lg={12} sm={12} xs={24} className="pull-right">
                 {resourceUrl && (
                     <div className="resource-wrapper">
-                        <FileDownloader type="resource" fileName={resourceName} url={resourceUrl} />
+                        {/* <FileDownloader type="resource" fileName={resourceName} url={resourceUrl} /> */}
                     </div>
                 )}
             </Col>

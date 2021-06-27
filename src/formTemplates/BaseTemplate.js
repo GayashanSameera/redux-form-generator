@@ -3,7 +3,7 @@ import { Row, Col } from "antd";
 import _ from "lodash";
 import { FORM_TEMPLATES } from "./constants";
 import { FullContainer, HalfContainer, PublishCheckbox, AddMoreContainer } from "./FieldContainer";
-import MultiPublishContainer from "../multiPublish";
+// import MultiPublishContainer from "../multiPublish";
 import FormField from "./FormField";
 
 const {
@@ -62,7 +62,7 @@ const DynamicComponent = ({ element, disabled, children }) => {
     ) : element.type === ADD_MORE_CONTAINER ? (
         <AddMoreContainer element={element} />
     ) : element.type === PUBLISH_MULTI_CHECKBOX_CONTAINER ? (
-        <MultiPublishContainer rows={element.data} formName={element.formName} />
+        <AddMoreContainer rows={element.data} formName={element.formName} />
     ) : null;
 };
 

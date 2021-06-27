@@ -1,12 +1,9 @@
 import { Provider } from 'react-redux';
 import store from './redux/store';
-
+import routes from './routes';
 import logo from './logo.svg';
 import './App.css';
 
-
-import SampleFormOne from './SampleFormOne';
-
-const App = () => <Provider store={store}><SampleFormOne/></Provider>;
+const App = () => <Provider store={store}>{routes}</Provider>;
 
 export default App;
