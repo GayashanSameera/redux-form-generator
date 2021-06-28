@@ -8,8 +8,8 @@ import StepThree from "../containers/StepThree";
 import StepFour from "../containers/StepFour";
 import StepFive from "../containers/StepFive";
 import StepSix from "../containers/StepSix";
-
-
+import StepSeven from "../containers/StepSeven";
+import StepEight from "../containers/StepEight";
 
 const routes = (
     <ReactRouter history={history}>
@@ -20,6 +20,8 @@ const routes = (
             <Route exact path="/4" render={(props) => <StepFour />} />
             <Route exact path="/5" render={(props) => <StepFive />} />
             <Route exact path="/6" render={(props) => <StepSix />} />
+            <Route exact path="/7" render={(props) => <StepSeven />} />
+            <Route exact path="/8" render={(props) => <StepEight />} />
         </Switch>
     </ReactRouter>
 );
