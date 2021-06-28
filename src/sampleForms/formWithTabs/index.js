@@ -65,13 +65,17 @@ let FormWithTabs = (props) => {
                         <Tabs.TabPane tab={tab.tabName} key={tab.tabKey} forceRender={true}>
                             <div className="form-body">
                                 <Suspense>
-                                    <SectionGenerator
-                                        formSectionType={FORM_SECTION_TYPE_SIMPLE}
-                                        formSectionName={tab.tabKey}
-                                        formName={formName}
-                                        disabled={false}
-                                        formFields={tab.formSection}
-                                    />
+                                    {tab.type === "FORM_SECTION" ? (
+                                        <SectionGenerator
+                                            formSectionType={FORM_SECTION_TYPE_SIMPLE}
+                                            formSectionName={tab.tabKey}
+                                            formName={formName}
+                                            disabled={false}
+                                            formFieldData={tab.formFieldData}
+                                        />
+                                    ) : tab.type === "COMPONENT" ? (
+                                        tab.formSection
+                                    ) : null}
                                 </Suspense>
                             </div>
                         </Tabs.TabPane>

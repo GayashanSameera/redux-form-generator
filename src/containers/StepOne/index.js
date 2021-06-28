@@ -9,7 +9,7 @@ import { FORM_TYPE_SIMPLE } from "../../constants";
 let StepOne = (props) => {
     return (
         <>
-            <CreateForm formFields={formFields} formName={FORM_NAME} formType={FORM_TYPE_SIMPLE} />
+            <CreateForm formFieldFunction={formFields} formName={FORM_NAME} formType={FORM_TYPE_SIMPLE} />
         </>
     );
 };

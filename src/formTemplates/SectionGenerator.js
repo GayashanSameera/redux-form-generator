@@ -6,10 +6,10 @@ import FormBaseTemplate from "./BaseTemplate";
 import { FORM_SECTION_TYPE_SIMPLE } from "../constants";
 
 const simpleFormSection = (props) => {
-    const { formSectionName, formFields, disabled } = props;
+    const { formSectionName, formFieldData, disabled } = props;
     return (
         <FormSection name={formSectionName}>
-            <FormBaseTemplate data={formFields} disabled={disabled} />
+            <FormBaseTemplate data={formFieldData} disabled={disabled} />
         </FormSection>
     );
 };

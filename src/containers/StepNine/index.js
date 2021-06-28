@@ -15,15 +15,21 @@ let StepNine = (props) => {
     console.log("dirtyFormValues:", dirtyFormValues);
     const formTabs = [
         {
+            type: 'FORM_SECTION',
             tabKey: "assetFsKey",
             tabName: "assetFsName",
-            formSection: formFields(dirtyFormValues),
+            formFieldData: formFields(dirtyFormValues),
         },
         {
+            type: 'FORM_SECTION',
             tabKey: "liabilitiesFsKey",
             tabName: "liabilitiesFsName",
-            formSection: formFieldTwo(dirtyFormValues),
+            formFieldData: formFieldTwo(dirtyFormValues),
         },
+        // {
+        //     type: 'COMPONENT',
+        //     component: <iabilitiesFsKey/>
+        // }
     ];
     return (
         <>

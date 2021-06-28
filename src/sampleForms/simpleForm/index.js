@@ -9,7 +9,7 @@ import { FORM_ACTION_TYPES } from "../../formTemplates/constants";
 import { GENERATE_FORM_TYPE_SIMPLE } from "../../constants";
 
 let SampleFormOne = (props) => {
-    const { submitSimpleFormOne, simpleFormData, formFields, formName } = props;
+    const { submitSimpleFormOne, simpleFormData, formFieldFunction, formName } = props;
     const dispatch = useDispatch();
     const dirtyFormValues = useSelector(getFormValues(formName));
 
@@ -56,7 +56,7 @@ let SampleFormOne = (props) => {
                 className="generate-iaa-manager-letters-form"
                 onSubmit={formSubmit}
                 name={formName}
-                formFields={formFields}
+                formFieldData={formFieldFunction({...dirtyFormValues, ...props})}
                 formType={GENERATE_FORM_TYPE_SIMPLE}
             />
         </>

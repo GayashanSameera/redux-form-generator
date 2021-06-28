@@ -3,7 +3,7 @@ import { required } from "redux-form-validators";
 import { INPUT_FIELD, FORM_TEMPLATES } from "../../formTemplates/constants";
 const { FULL_CONTAINER } = FORM_TEMPLATES;
 
-export const formFieldTwo = (dirtyFormValues = {}, schemeId) => {
+export const formFieldTwo = (dirtyFormValues = {}) => {
     console.log('dirtyFormValues...',dirtyFormValues);
     return [
         {
