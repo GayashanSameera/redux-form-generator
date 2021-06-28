@@ -2,13 +2,14 @@ import SimpleArrayFieldForm from "./simpleArrayFieldForm";
 import SimpleFieldForm from "./simpleFieldForm";
 import SimpleExternalValidations from "./simpleExternalValidation";
 import ExternalSubmit from "./externalSubmit";
-
+import InitializeValues from "./InitializeValues";
 
 import {
     FORM_TYPE_SIMPLE_ARRAY_FIELD_FINAL_FORM,
     FORM_TYPE_SIMPLE_FIELD_FINAL_FORM,
     FORM_TYPE_EXTERNAL_VALIDATORS_FINAL_FORM,
     FORM_TYPE_EXTERNAL_SUBMIT_FINAL_FORM,
+    FORM_TYPE_INITIALIZE_FINAL_FORM,
 } from "../constants";
 
 let CreateForm = (props) => {
@@ -21,9 +22,11 @@ let CreateForm = (props) => {
                 <SimpleFieldForm />
             ) : formType === FORM_TYPE_EXTERNAL_VALIDATORS_FINAL_FORM ? (
                 <SimpleExternalValidations />
-            ): formType === FORM_TYPE_EXTERNAL_SUBMIT_FINAL_FORM ? (
+            ) : formType === FORM_TYPE_EXTERNAL_SUBMIT_FINAL_FORM ? (
                 <ExternalSubmit />
-            )  : null}
+            ) : formType === FORM_TYPE_INITIALIZE_FINAL_FORM ? (
+                <InitializeValues />
+            ) : null}
         </>
     );
 };
