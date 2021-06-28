@@ -4,14 +4,14 @@ import React from "react";
 // import { FORM_NAME } from "./constants";
 
 import CreateForm from "../../finalFormsamples";
-import { FORM_TYPE_SIMPLE_ARRAY_FIELD_FINAL_FORM } from "../../constants";
+import { FORM_TYPE_SIMPLE_FIELD_FINAL_FORM } from "../../constants";
 //formFields={formFields} formName={FORM_NAME}
-let StepTwo = (props) => {
+let StepThree = (props) => {
     return (
         <>
-            <CreateForm  formType={FORM_TYPE_SIMPLE_ARRAY_FIELD_FINAL_FORM} /> 
+            <CreateForm  formType={FORM_TYPE_SIMPLE_FIELD_FINAL_FORM} /> 
         </>
     );
 };
 
-export default StepTwo;
+export default StepThree;
