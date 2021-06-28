@@ -10,6 +10,7 @@ import StepFive from "../containers/StepFive";
 import StepSix from "../containers/StepSix";
 import StepSeven from "../containers/StepSeven";
 import StepEight from "../containers/StepEight";
+import StepNine from "../containers/StepNine";
 
 const routes = (
     <ReactRouter history={history}>
@@ -22,6 +23,7 @@ const routes = (
             <Route exact path="/6" render={(props) => <StepSix />} />
             <Route exact path="/7" render={(props) => <StepSeven />} />
             <Route exact path="/8" render={(props) => <StepEight />} />
+            <Route exact path="/9" render={(props) => <StepNine />} />
         </Switch>
     </ReactRouter>
 );

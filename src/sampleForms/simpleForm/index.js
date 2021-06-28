@@ -6,7 +6,7 @@ import { useDispatch, useSelector, connect } from "react-redux";
 import FormGenerator from "../../formTemplates/FormGenerator";
 import FormHeaderComponent from "../../formTemplates/FormHeader";
 import { FORM_ACTION_TYPES } from "../../formTemplates/constants";
-import { FORM_TYPE_SIMPLE } from "../../constants";
+import { GENERATE_FORM_TYPE_SIMPLE } from "../../constants";
 
 let SampleFormOne = (props) => {
     const { submitSimpleFormOne, simpleFormData, formFields, formName } = props;
@@ -57,7 +57,7 @@ let SampleFormOne = (props) => {
                 onSubmit={formSubmit}
                 name={formName}
                 formFields={formFields}
-                formType={FORM_TYPE_SIMPLE}
+                formType={GENERATE_FORM_TYPE_SIMPLE}
             />
         </>
     );
