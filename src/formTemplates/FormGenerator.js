@@ -4,10 +4,11 @@ import { compose } from "redux";
 import { connect, useDispatch, useSelector } from "react-redux";
 
 import FormBaseTemplate from "./BaseTemplate";
-import { FORM_TYPE_SIMPLE, FORM_TYPE_CHILDREN } from "../constants";
+import { GENERATE_FORM_TYPE_SIMPLE, GENERATE_FORM_TYPE_CHILDREN } from "../constants";
 
 const simpleFormFormat = (props) => {
     const { handleSubmit, name, schemeId, completed, formFieldData, className } = props;
+    console.log('formFieldData.........',JSON.stringify(formFieldData));
     return (
         <form className={className} onSubmit={handleSubmit}>
             <div className="form-body">
@@ -27,14 +28,14 @@ const formWithChildrenFormat = (props) => {
 };
 
 let FormGenerator = (props) => {
-    const { formType = FORM_TYPE_SIMPLE, name } = props;
+    const { formType = GENERATE_FORM_TYPE_SIMPLE, name } = props;
 
     const dispatch = useDispatch();
     const dirtyFormValues = useSelector(getFormValues(name));
 
-    return formType === FORM_TYPE_SIMPLE ? (
+    return formType === GENERATE_FORM_TYPE_SIMPLE ? (
         simpleFormFormat({ dirtyFormValues, ...props })
-    ) : formType === FORM_TYPE_CHILDREN ? (
+    ) : formType === GENERATE_FORM_TYPE_CHILDREN ? (
         formWithChildrenFormat({ dirtyFormValues, ...props })
     ) : (
         <></>

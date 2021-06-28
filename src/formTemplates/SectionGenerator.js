@@ -3,7 +3,7 @@ import { getFormValues, FormSection } from "redux-form";
 import { useDispatch, useSelector } from "react-redux";
 
 import FormBaseTemplate from "./BaseTemplate";
-import { FORM_SECTION_TYPE_SIMPLE } from "../constants";
+import { GENERATE_FORM_SECTION_TYPE_SIMPLE } from "../constants";
 
 const simpleFormSection = (props) => {
     const { formSectionName, formFieldData, disabled } = props;
@@ -15,12 +15,12 @@ const simpleFormSection = (props) => {
 };
 
 let FormSectionGenerator = (props) => {
-    const { formSectionType = FORM_SECTION_TYPE_SIMPLE, formSectionName, formName, disabled } = props;
+    const { formSectionType = GENERATE_FORM_SECTION_TYPE_SIMPLE, formSectionName, formName, disabled } = props;
 
     const dispatch = useDispatch();
     const dirtyFormValues = useSelector(getFormValues(formName));
 
-    return formSectionType === FORM_SECTION_TYPE_SIMPLE ? simpleFormSection({ dirtyFormValues, ...props }) : <></>;
+    return formSectionType === GENERATE_FORM_SECTION_TYPE_SIMPLE ? simpleFormSection({ dirtyFormValues, ...props }) : <></>;
 };
 
 export default FormSectionGenerator;

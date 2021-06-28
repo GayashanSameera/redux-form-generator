@@ -1,0 +1,13 @@
+[
+    {
+        "type": "full_container",
+        "bool": true,
+        "label": "form using JSON",
+        "field": {
+            "__order": "a",
+            "name": "activationCode",
+            "className": "form-control",
+            "component": "INPUT_FIELD"
+        }
+    }
+]

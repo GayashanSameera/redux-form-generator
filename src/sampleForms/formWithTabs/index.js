@@ -8,7 +8,7 @@ import FormGenerator from "../../formTemplates/FormGenerator";
 import SectionGenerator from "../../formTemplates/SectionGenerator";
 import FormHeaderComponent from "../../formTemplates/FormHeader";
 import { FORM_ACTION_TYPES } from "../../formTemplates/constants";
-import { FORM_TYPE_CHILDREN, FORM_SECTION_TYPE_SIMPLE } from "../../constants";
+import { GENERATE_FORM_TYPE_CHILDREN, GENERATE_FORM_SECTION_TYPE_SIMPLE } from "../../constants";
 
 let FormWithTabs = (props) => {
     const { submitFormWithTabs, submitFormWithTabsData, formName, formTabs } = props;
@@ -58,7 +58,7 @@ let FormWithTabs = (props) => {
                 className="generate-iaa-manager-letters-form"
                 onSubmit={formSubmit}
                 name={formName}
-                formType={FORM_TYPE_CHILDREN}
+                formType={GENERATE_FORM_TYPE_CHILDREN}
             >
                 <Tabs>
                     {formTabs.map((tab) => (
@@ -67,7 +67,7 @@ let FormWithTabs = (props) => {
                                 <Suspense>
                                     {tab.type === "FORM_SECTION" ? (
                                         <SectionGenerator
-                                            formSectionType={FORM_SECTION_TYPE_SIMPLE}
+                                            formSectionType={GENERATE_FORM_SECTION_TYPE_SIMPLE}
                                             formSectionName={tab.tabKey}
                                             formName={formName}
                                             disabled={false}

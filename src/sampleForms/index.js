@@ -1,7 +1,9 @@
 import SampleFormOne from "./simpleForm";
 import FormWithTabs from "./formWithTabs";
+import SimpleFormUsingJson from "./SimpleFormUsingJson";
 
-import { FORM_TYPE_SIMPLE, FORM_TYPE_CHILDREN } from "../constants";
+
+import { FORM_TYPE_SIMPLE, FORM_TYPE_CHILDREN, FORM_TYPE_CREATE_FROM_JSON } from "../constants";
 
 let CreateForm = (props) => {
     const { handleSubmit, formType } = props;
@@ -11,7 +13,9 @@ let CreateForm = (props) => {
                 <SampleFormOne {...props} />
             ) : formType === FORM_TYPE_CHILDREN ? (
                 <FormWithTabs {...props} />
-            ) : null}
+            ) : formType === FORM_TYPE_CREATE_FROM_JSON ? (
+                <SimpleFormUsingJson {...props} />
+            ): null}
         </>
     );
 };
