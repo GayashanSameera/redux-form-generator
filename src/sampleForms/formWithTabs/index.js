@@ -10,10 +10,8 @@ import FormHeaderComponent from "../../formTemplates/FormHeader";
 import { FORM_ACTION_TYPES } from "../../formTemplates/constants";
 import { FORM_TYPE_CHILDREN, FORM_SECTION_TYPE_SIMPLE } from "../../constants";
 
-import { formFields } from "./formConfig";
-
 let FormWithTabs = (props) => {
-    const { submitFormWithTabs, submitFormWithTabsData, formName } = props;
+    const { submitFormWithTabs, submitFormWithTabsData, formName, formTabs } = props;
     const dispatch = useDispatch();
     const dirtyFormValues = useSelector(getFormValues(formName));
 
@@ -53,19 +51,6 @@ let FormWithTabs = (props) => {
         ],
     };
 
-    const formTabs = [
-        {
-            tabKey: "assetFsKey",
-            tabName: "assetFsName",
-            formSection: formFields,
-        },
-        {
-            tabKey: "liabilitiesFsKey",
-            tabName: "liabilitiesFsName",
-            formSection: formFields,
-        },
-    ];
-
     return (
         <>
             <FormHeaderComponent {...formHeaderProps} />
@@ -82,7 +67,7 @@ let FormWithTabs = (props) => {
                                 <Suspense>
                                     <SectionGenerator
                                         formSectionType={FORM_SECTION_TYPE_SIMPLE}
-                                        formSectionName={}
+                                        formSectionName={tab.tabKey}
                                         formName={formName}
                                         disabled={false}
                                         formFields={tab.formSection}
