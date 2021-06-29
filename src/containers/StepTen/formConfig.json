@@ -7,7 +7,10 @@
             "__order": "a",
             "name": "activationCode",
             "className": "form-control",
-            "component": "INPUT_FIELD"
+            "component": "INPUT_FIELD",
+            "validationModules":[{
+                "moduleName": "REQUIRED"
+            }]
         }
     },
     {

@@ -2,6 +2,8 @@ import React, { Fragment } from "react";
 import { Row, Col } from "antd";
 import _ from "lodash";
 import { FORM_TEMPLATES } from "./constants";
+import { ValidationModules } from "./ValidationModules";
+
 import { FullContainer, HalfContainer, PublishCheckbox, AddMoreContainer } from "./FieldContainer";
 // import MultiPublishContainer from "../multiPublish";
 import FormField from "./FormField";
@@ -23,6 +25,11 @@ const DynamicComponent = ({ element, disabled, children, conditions }) => {
     if (typeof element.bool !== "undefined" && element.bool === false) return null;
     if (typeof element.bool === "string" && !conditions) return null;
     if (typeof element.bool === "string" && conditions && !conditions[element.bool]) return null;
+
+    if (element.field && element.field.validationModules) {
+        const validations = ValidationModules(element.field.validationModules);
+        if(validations) element.field.validate = validations;
+    }
 
     return element.type === ROW ? (
         <Row {...element.props}>
