@@ -21,14 +21,25 @@ const {
     PUBLISH_MULTI_CHECKBOX_CONTAINER,
 } = FORM_TEMPLATES;
 
-const DynamicComponent = ({ element, disabled, children, conditions }) => {
+const DynamicComponent = ({ element, disabled, children, formHooks }) => {
     if (typeof element.bool !== "undefined" && element.bool === false) return null;
-    if (typeof element.bool === "string" && !conditions) return null;
-    if (typeof element.bool === "string" && conditions && !conditions[element.bool]) return null;
+    if (typeof element.bool === "string" && !formHooks) return null;
+    if (typeof element.bool === "string" && formHooks && !formHooks[element.bool]) return null;
 
     if (element.field && element.field.validationModules) {
         const validations = ValidationModules(element.field.validationModules);
-        if(validations) element.field.validate = validations;
+        if (validations) {
+            delete element.field.validationModules;
+            element.field.validate = validations;
+        }
+    }
+
+    if (element.field && element.field.onChange && formHooks && formHooks[element.field.onChange]) {
+        const onChangeHookName = element.field.onChange;
+        delete element.field.onChange;
+        element.field.onChange = (e) => {
+            formHooks[`${onChangeHookName}`](e.target.value);
+        };
     }
 
     return element.type === ROW ? (
@@ -76,12 +87,12 @@ const DynamicComponent = ({ element, disabled, children, conditions }) => {
     ) : null;
 };
 
-const BaseTemplate = ({ data: json, disabled, conditions }) => (
+const BaseTemplate = ({ data: json, disabled, formHooks }) => (
     <>
         {json.map(function mapper(element, eKey) {
             return (
                 <Fragment key={eKey}>
-                    <DynamicComponent element={element} {...element.props} disabled={disabled} conditions={conditions}>
+                    <DynamicComponent element={element} {...element.props} disabled={disabled} formHooks={formHooks}>
                         {Array.isArray(element.childComponents) ? element.childComponents.map(mapper) : null}
                     </DynamicComponent>
                     {Array.isArray(element.when)

@@ -7,12 +7,12 @@ import FormBaseTemplate from "./BaseTemplate";
 import { GENERATE_FORM_TYPE_SIMPLE, GENERATE_FORM_TYPE_CHILDREN } from "../constants";
 
 const simpleFormFormat = (props) => {
-    const { handleSubmit, name, schemeId, completed, formFieldData, className, conditions } = props;
+    const { handleSubmit, name, schemeId, completed, formFieldData, className, formHooks } = props;
     
     return (
         <form className={className} onSubmit={handleSubmit}>
             <div className="form-body">
-                <FormBaseTemplate data={formFieldData} disabled={completed} conditions={conditions} />
+                <FormBaseTemplate data={formFieldData} disabled={completed} formHooks={formHooks} />
             </div>
         </form>
     );

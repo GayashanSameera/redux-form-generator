@@ -10,7 +10,8 @@
             "component": "INPUT_FIELD",
             "validationModules":[{
                 "moduleName": "REQUIRED"
-            }]
+            }],
+            "onChange": "onchangeActivationCode"
         }
     },
     {
