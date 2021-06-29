@@ -2,21 +2,39 @@
     {
         "type": "full_container",
         "bool": true,
-        "label": "form using JSON",
+        "label": "activation Code form using JSON",
         "field": {
             "__order": "a",
             "name": "activationCode",
+            "className": "form-control",
+            "component": "INPUT_FIELD",
+            "validate": [
+                    {
+                        "validationType": "REQUIRED",
+                        "message": "required"
+                    
+                    }
+                ]
+        }
+    },
+    {
+        "type": "full_container",
+        "bool": "activationCodeTypeEnable",
+        "label": "activation Code Type form using JSON",
+        "field": {
+            "__order": "b",
+            "name": "activationCodeType",
             "className": "form-control",
             "component": "INPUT_FIELD"
         }
     },
     {
         "type": "full_container",
-        "bool": "activeWorkFlowCondition",
+        "bool": "activationNameEnable",
         "label": "form using JSON",
         "field": {
-            "__order": "a",
-            "name": "activationCode",
+            "__order": "c",
+            "name": "activationName",
             "className": "form-control",
             "component": "INPUT_FIELD"
         }
