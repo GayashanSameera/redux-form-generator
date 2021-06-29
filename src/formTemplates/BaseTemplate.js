@@ -19,8 +19,11 @@ const {
     PUBLISH_MULTI_CHECKBOX_CONTAINER,
 } = FORM_TEMPLATES;
 
-const DynamicComponent = ({ element, disabled, children }) => {
+const DynamicComponent = ({ element, disabled, children, conditions }) => {
     if (typeof element.bool !== "undefined" && element.bool === false) return null;
+    if (typeof element.bool === "string" && !conditions) return null;
+    if (typeof element.bool === "string" && conditions && !conditions[element.bool]) return null;
+
     return element.type === ROW ? (
         <Row {...element.props}>
             {element.removeBubble && element.removeBubble.bool && !disabled && (
@@ -66,12 +69,12 @@ const DynamicComponent = ({ element, disabled, children }) => {
     ) : null;
 };
 
-const BaseTemplate = ({ data: json, disabled }) => (
+const BaseTemplate = ({ data: json, disabled, conditions }) => (
     <>
         {json.map(function mapper(element, eKey) {
             return (
                 <Fragment key={eKey}>
-                    <DynamicComponent element={element} {...element.props} disabled={disabled}>
+                    <DynamicComponent element={element} {...element.props} disabled={disabled} conditions={conditions}>
                         {Array.isArray(element.childComponents) ? element.childComponents.map(mapper) : null}
                     </DynamicComponent>
                     {Array.isArray(element.when)
