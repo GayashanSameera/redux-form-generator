@@ -7,14 +7,7 @@
             "__order": "a",
             "name": "activationCode",
             "className": "form-control",
-            "component": "INPUT_FIELD",
-            "validate": [
-                    {
-                        "validationType": "REQUIRED",
-                        "message": "required"
-                    
-                    }
-                ]
+            "component": "INPUT_FIELD"
         }
     },
     {
