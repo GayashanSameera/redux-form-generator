@@ -9,5 +9,16 @@
             "className": "form-control",
             "component": "INPUT_FIELD"
         }
+    },
+    {
+        "type": "full_container",
+        "bool": "activeWorkFlowCondition",
+        "label": "form using JSON",
+        "field": {
+            "__order": "a",
+            "name": "activationCode",
+            "className": "form-control",
+            "component": "INPUT_FIELD"
+        }
     }
 ]

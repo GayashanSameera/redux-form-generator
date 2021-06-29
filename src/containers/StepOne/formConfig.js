@@ -18,5 +18,17 @@ export const formFields = (dirtyFormValues = {}) => {
                 validate: [required({ message: "Required" })],
             },
         },
+        {
+            type: FULL_CONTAINER,
+            bool: dirtyFormValues['activationCode'],
+            label: "Activation code",
+            field: {
+                __order: "a",
+                name: "activationCode",
+                className: "form-control",
+                component: INPUT_FIELD,
+                validate: [required({ message: "Required" })],
+            },
+        },
     ];
 };
