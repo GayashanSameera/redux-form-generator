@@ -2,6 +2,8 @@ import React, { Fragment } from "react";
 import { Row, Col } from "antd";
 import _ from "lodash";
 import { FORM_TEMPLATES } from "./constants";
+import { ValidationModules } from "./ValidationModules";
+
 import { FullContainer, HalfContainer, PublishCheckbox, AddMoreContainer } from "./FieldContainer";
 // import MultiPublishContainer from "../multiPublish";
 import FormField from "./FormField";
@@ -19,8 +21,27 @@ const {
     PUBLISH_MULTI_CHECKBOX_CONTAINER,
 } = FORM_TEMPLATES;
 
-const DynamicComponent = ({ element, disabled, children }) => {
+const DynamicComponent = ({ element, disabled, children, formHooks }) => {
     if (typeof element.bool !== "undefined" && element.bool === false) return null;
+    if (typeof element.bool === "string" && !formHooks) return null;
+    if (typeof element.bool === "string" && formHooks && !formHooks[element.bool]) return null;
+
+    if (element.field && element.field.validationModules) {
+        const validations = ValidationModules(element.field.validationModules);
+        if (validations) {
+            delete element.field.validationModules;
+            element.field.validate = validations;
+        }
+    }
+
+    if (element.field && element.field.onChange && formHooks && formHooks[element.field.onChange]) {
+        const onChangeHookName = element.field.onChange;
+        delete element.field.onChange;
+        element.field.onChange = (e) => {
+            formHooks[`${onChangeHookName}`](e.target.value);
+        };
+    }
+
     return element.type === ROW ? (
         <Row {...element.props}>
             {element.removeBubble && element.removeBubble.bool && !disabled && (
@@ -66,12 +87,12 @@ const DynamicComponent = ({ element, disabled, children }) => {
     ) : null;
 };
 
-const BaseTemplate = ({ data: json, disabled }) => (
+const BaseTemplate = ({ data: json, disabled, formHooks }) => (
     <>
         {json.map(function mapper(element, eKey) {
             return (
                 <Fragment key={eKey}>
-                    <DynamicComponent element={element} {...element.props} disabled={disabled}>
+                    <DynamicComponent element={element} {...element.props} disabled={disabled} formHooks={formHooks}>
                         {Array.isArray(element.childComponents) ? element.childComponents.map(mapper) : null}
                     </DynamicComponent>
                     {Array.isArray(element.when)

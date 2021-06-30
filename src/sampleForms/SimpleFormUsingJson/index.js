@@ -9,12 +9,9 @@ import { FORM_ACTION_TYPES } from "../../formTemplates/constants";
 import { GENERATE_FORM_TYPE_SIMPLE } from "../../constants";
 
 let SimpleFormUsingJson = (props) => {
-    const { submitSimpleFormOne, simpleFormData, formFieldData, formName } = props;
+    const { submitSimpleFormOne, simpleFormData, formFieldData, formName, formHooks } = props;
     const dispatch = useDispatch();
     const dirtyFormValues = useSelector(getFormValues(formName));
-
-    console.log("dirtyFormValues", dirtyFormValues);
-    console.log("simpleFormData", simpleFormData);
 
     const formSubmit = (formData) => {
         console.log("formData", formData);
@@ -58,6 +55,7 @@ let SimpleFormUsingJson = (props) => {
                 name={formName}
                 formFieldData={formFieldData}
                 formType={GENERATE_FORM_TYPE_SIMPLE}
+                formHooks = {formHooks}
             />
         </>
     );

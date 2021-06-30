@@ -16,6 +16,7 @@ export const formFields = (dirtyFormValues = {}) => {
                 className: "form-control",
                 component: INPUT_FIELD,
                 validate: [required({ message: "Required" })],
+                onChange: e => {console.log('eee',e.target.value)}
             },
         },
     ];
