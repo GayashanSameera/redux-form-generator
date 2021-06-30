@@ -15,6 +15,8 @@ import StepTen from "../containers/StepTen";
 
 import FormikOne from "../containers/formik1";
 import FormikTwo from "../containers/formik2";
+import FormikThree from "../containers/formik3";
+
 
 
 
@@ -34,6 +36,8 @@ const routes = (
             <Route exact path="/10" render={(props) => <StepTen />} />
             <Route exact path="/FM1" render={(props) => <FormikOne />} />
             <Route exact path="/FM2" render={(props) => <FormikTwo />} />
+            <Route exact path="/FM3" render={(props) => <FormikThree />} />
+
         </Switch>
     </ReactRouter>
 );
