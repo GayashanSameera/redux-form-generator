@@ -13,6 +13,11 @@ import StepEight from "../containers/StepEight";
 import StepNine from "../containers/StepNine";
 import StepTen from "../containers/StepTen";
 
+import FormikOne from "../containers/formik1";
+import FormikTwo from "../containers/formik2";
+
+
+
 
 const routes = (
     <ReactRouter history={history}>
@@ -27,6 +32,8 @@ const routes = (
             <Route exact path="/8" render={(props) => <StepEight />} />
             <Route exact path="/9" render={(props) => <StepNine />} />
             <Route exact path="/10" render={(props) => <StepTen />} />
+            <Route exact path="/FM1" render={(props) => <FormikOne />} />
+            <Route exact path="/FM2" render={(props) => <FormikTwo />} />
         </Switch>
     </ReactRouter>
 );
