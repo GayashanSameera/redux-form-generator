@@ -1,13 +1,13 @@
 # Getting Started with redux form generator
 
 in this repo there are several examples in containers directory.\
-if we need to create form you need to use CreateForm component and need to select form type. \
+if we need to create form you need to use CreateForm component and need to select form type.
 
 ### `Form types`
 
-'FORM_TYPE_SIMPLE'  => for simple forms, you can pass function to create content
-'FORM_TYPE_CHILDREN' => for forms with tabs, you can pass function to create content
-'FORM_TYPE_CREATE_FROM_JSON' => for every forms, you can pass JSON to create content and need to pass several hooks
+'FORM_TYPE_SIMPLE'  => for simple forms, you can pass function to create content.\
+'FORM_TYPE_CHILDREN' => for forms with tabs, you can pass function to create content.\
+'FORM_TYPE_CREATE_FROM_JSON' => for every forms, you can pass JSON to create content and need to pass several hooks.
 
 
 ## Available form generator formats
