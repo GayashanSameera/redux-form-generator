@@ -18,6 +18,8 @@ import FormikTwo from "../containers/formik2";
 import FormikThree from "../containers/formik3";
 
 import FaceDetection from "../facedetection/new";
+import Ocr from "../ocr";
+
 
 
 
@@ -40,6 +42,7 @@ const routes = (
             <Route exact path="/FM2" render={(props) => <FormikTwo />} />
             <Route exact path="/FM3" render={(props) => <FormikThree />} />
             <Route exact path="/" render={(props) => <FaceDetection />} />
+            <Route exact path="/ocr" render={(props) => <Ocr />} />
 
         </Switch>
     </ReactRouter>
