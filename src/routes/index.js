@@ -19,7 +19,7 @@ import FormikThree from "../containers/formik3";
 
 import FaceDetection from "../facedetection/new";
 import Ocr from "../ocr";
-
+import QuoteApp from "../charts";
 
 
 
@@ -41,9 +41,9 @@ const routes = (
             <Route exact path="/FM1" render={(props) => <FormikOne />} />
             <Route exact path="/FM2" render={(props) => <FormikTwo />} />
             <Route exact path="/FM3" render={(props) => <FormikThree />} />
-            <Route exact path="/" render={(props) => <FaceDetection />} />
+            <Route exact path="/F" render={(props) => <FaceDetection />} />
             <Route exact path="/ocr" render={(props) => <Ocr />} />
-
+            <Route exact path="/" render={(props) => <QuoteApp />} />
         </Switch>
     </ReactRouter>
 );

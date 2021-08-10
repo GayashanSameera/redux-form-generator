@@ -103,7 +103,7 @@ const Ocr = (props) => {
     return (
         <div>
             <Webcam
-                ref={webcamReference}
+                // ref={webcamReference}
                 style={{
                     position: "absolute",
                     marginLeft: "auto",
@@ -120,7 +120,7 @@ const Ocr = (props) => {
 
 
             <canvas
-                ref={canvasReference}
+                // ref={canvasReference}
                 style={{
                     position: "absolute",
                     marginLeft: "auto",
