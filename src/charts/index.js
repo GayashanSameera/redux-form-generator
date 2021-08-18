@@ -44,7 +44,14 @@ const move = (source, destination, droppableSource, droppableDestination) => {
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
     const [removed] = sourceClone.splice(droppableSource.index, 1);
+    console.log('sourceClone.............',sourceClone);
+    console.log('destClone.............',destClone);
+    console.log('droppableSource.............',droppableSource);
+    console.log('droppableDestination.............',droppableDestination);
 
+    const [removedDes] = destClone.splice(droppableDestination.index > 3 ? 3 : droppableDestination.index , 1);
+    console.log('removedDes.............',removedDes);
+    sourceClone.splice(droppableSource.index, 0, removedDes);
     destClone.splice(droppableDestination.index, 0, removed);
 
     const result = {};
@@ -99,8 +106,8 @@ function QuoteApp() {
             const result = move(state[sInd], state[dInd], source, destination);
             const newState = state;
 
-            if (result[dInd] && result[dInd].length > 4 && dInd !== "5")
-                return alert("you cannot add more than 4 elements to one box. first add your element to bin box");
+            // if (result[dInd] && result[dInd].length > 4 && dInd !== "5")
+            //     return alert("you cannot add more than 4 elements to one box. first add your element to bin box");
             newState[sInd] = result[sInd];
             newState[dInd] = result[dInd];
 
@@ -112,42 +119,6 @@ function QuoteApp() {
         <div>
             <div style={{ display: "flex" }}>
                 <DragDropContext onDragEnd={onDragEnd}>
-                    <Droppable key={`5`} droppableId={`5`}>
-                        {(provided, snapshot) => (
-                            <div
-                                ref={provided.innerRef}
-                                style={getListStyle(snapshot.isDraggingOver)}
-                                {...provided.droppableProps}
-                            >
-                                {state[5].length &&
-                                    state[5].map((item, index) => (
-                                        <Draggable key={item.id} draggableId={item.id} index={index}>
-                                            {(provided, snapshot) => (
-                                                <div
-                                                    ref={provided.innerRef}
-                                                    {...provided.draggableProps}
-                                                    {...provided.dragHandleProps}
-                                                    style={getItemStyle(
-                                                        snapshot.isDragging,
-                                                        provided.draggableProps.style
-                                                    )}
-                                                >
-                                                    <div
-                                                        style={{
-                                                            display: "flex",
-                                                            justifyContent: "space-around",
-                                                        }}
-                                                    >
-                                                        {item.content}
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </Draggable>
-                                    ))}
-                                {provided.placeholder}
-                            </div>
-                        )}
-                    </Droppable>
                     <Droppable key={`1`} droppableId={`1`}>
                         {(provided, snapshot) => (
                             <div
